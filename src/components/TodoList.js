@@ -1,7 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { addTodoList } from '../actions'
 
 export const TodoList = ({ title = '', todos = [] }) => (
   <div>
@@ -18,8 +16,4 @@ TodoList.propTypes = {
   )
 }
 
-const mapStateToProps = state => ({
-  ...state
-})
-
-export default connect(mapStateToProps, { addTodoList })(TodoList)
+export default TodoList
