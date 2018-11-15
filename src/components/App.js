@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import TodoList from './TodoList'
 import TodoListCreationBar from './TodoListCreationBar'
+import TodoListsContainer from './TodoListsContainer'
 import './App.css'
 
 class App extends Component {
@@ -8,7 +8,7 @@ class App extends Component {
     return (
       <div className="App">
         <TodoListCreationBar />
-        <TodoList title={'Hello World'} />
+        <TodoListsContainer />
       </div>
     )
   }

@@ -22,6 +22,6 @@ describe('App', () => {
       </Provider>
     )
 
-    expect(appComponent.find('TodoList').length).toEqual(1)
+    expect(appComponent.find('TodoListsContainer').length).toEqual(1)
   })
 })
