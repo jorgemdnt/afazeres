@@ -1,4 +1,4 @@
-let nextTodoListId = 0;
+let nextTodoListId = 0
 export const addTodoList = title => (
   {
     type: 'ADD_TODO_LIST',
@@ -7,4 +7,4 @@ export const addTodoList = title => (
       title: 'aee'
     }
   }
-);
+)

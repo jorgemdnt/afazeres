@@ -7,10 +7,10 @@ const todoLists = (state = [], action) => {
           id: action.payload.id,
           title: action.payload.title
         }
-      ];
+      ]
     default:
-      return state;
+      return state
   }
-};
+}
 
-export default todoLists;
+export default todoLists
