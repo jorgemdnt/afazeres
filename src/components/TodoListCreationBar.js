@@ -30,7 +30,7 @@ export class TodoListCreationBar extends React.Component {
       <div>
         <input onChange={this.onChangeTitle.bind(this)} value={this.state.newTodoListTitle}></input>
         <button onClick={this.onClickCreateTodoList.bind(this)}>
-          Eita carai
+          Add Todo List
         </button>
       </div>
     )
