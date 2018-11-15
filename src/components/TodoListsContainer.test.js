@@ -9,7 +9,7 @@ describe('TodoListsContainer', () => {
       title: 'Foo'
     }]
     const appComponent = mount(
-      <TodoListsContainer todoLists={todoLists} />
+      <TodoListsContainer todoLists={todoLists} removeTodoList={() => {}}/>
     )
 
     expect(appComponent.find('TodoList').length).toEqual(1)

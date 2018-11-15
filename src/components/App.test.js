@@ -11,7 +11,9 @@ describe('App', () => {
   let store
 
   beforeEach(() => {
-    const initialState = {}
+    const initialState = {
+      todoLists: []
+    }
     store = mockStore(initialState)
   })
 

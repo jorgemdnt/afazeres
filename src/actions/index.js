@@ -8,3 +8,12 @@ export const addTodoList = title => (
     }
   }
 )
+
+export const removeTodoList = todoListId => (
+  {
+    type: 'REMOVE_TODO_LIST',
+    payload: {
+      id: todoListId
+    }
+  }
+)
