@@ -7,10 +7,8 @@ describe('Todo List Actions', () => {
 
       const expectedAction = {
         type: 'ADD_TODO_LIST',
-        payload: {
-          id: 0,
-          title
-        }
+        id: 0,
+        title
       }
       expect(actions.addTodoList(title)).toEqual(expectedAction)
     })
@@ -20,11 +18,20 @@ describe('Todo List Actions', () => {
     it('removes todo list with id', () => {
       const expectedAction = {
         type: 'REMOVE_TODO_LIST',
-        payload: {
-          id: 99,
-        }
+        id: 99
       }
       expect(actions.removeTodoList(99)).toEqual(expectedAction)
+    })
+  })
+
+  describe('CHANGE_TODO_LIST_TITLE', () => {
+    it('returns action that changes title', () => {
+      const expectedAction = {
+        type: 'CHANGE_TODO_LIST_TITLE',
+        id: 99,
+        newTitle: 'Foo'
+      }
+      expect(actions.editTodoListTitle(99, 'Foo')).toEqual(expectedAction)
     })
   })
 })

@@ -1,10 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import TransparentTextInput from './TransparentTextInput'
+import DeleteIcon from './DeleteIcon'
 
-export const TodoList = ({ removeTodoList, id, title = '', todos = [] }) => (
+export const TodoList = ({ removeTodoList, editTodoListTitle, id, title = '', todos = [] }) => (
   <div className="TodoList">
-    <strong>{title}</strong>
-    <button onClick={() => removeTodoList(id)} className="TodoList__button">Remove</button>
+    <TransparentTextInput value={title} onSave={newTitle => editTodoListTitle(id, newTitle)} />
+    <button onClick={() => removeTodoList(id)} className="TodoList__delete-button">
+      <DeleteIcon />
+    </button>
   </div>
 )
 
@@ -16,7 +20,8 @@ TodoList.propTypes = {
       text: PropTypes.string
     })
   ),
-  removeTodoList: PropTypes.func
+  removeTodoList: PropTypes.func,
+  editTodoListTitle: PropTypes.func
 }
 
 export default TodoList

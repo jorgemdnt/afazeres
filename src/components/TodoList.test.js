@@ -6,14 +6,14 @@ describe('TodoList', () => {
   it('renders with a title', () => {
     const todoList = shallow(<TodoList title={'Foo'} />)
 
-    expect(todoList.find('strong').text()).toEqual('Foo')
+    expect(todoList.find('TransparentTextInput').props().value).toEqual('Foo')
   })
 
   it('removes todo list when remove button is clicked', () => {
     const removeTodoListMock = jest.fn()
     const todoList = mount(<TodoList title={'Foo'} id={99} removeTodoList={removeTodoListMock} />)
 
-    todoList.find('button').simulate('click')
+    todoList.find('.TodoList__delete-button').simulate('click')
 
     expect(removeTodoListMock).toHaveBeenCalledWith(99)
   })

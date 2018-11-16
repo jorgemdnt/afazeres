@@ -5,7 +5,7 @@ describe('todo list reducer', () => {
     expect(reducer(undefined, {})).toEqual([])
   })
 
-  describe('ADD_TODO_LIST handling', () => {
+  describe('ADD_TODO_LIST', () => {
     const newTodoListPayload = {
       id: 0,
       title: 'Foo'
@@ -15,7 +15,7 @@ describe('todo list reducer', () => {
       expect(
         reducer([], {
           type: 'ADD_TODO_LIST',
-          payload: newTodoListPayload
+          ...newTodoListPayload
         })
       ).toEqual([newTodoListPayload])
     })
@@ -29,26 +29,13 @@ describe('todo list reducer', () => {
       expect(
         reducer([preexistentTodoList], {
           type: 'ADD_TODO_LIST',
-          payload: newTodoListPayload
+          ...newTodoListPayload
         })
       ).toEqual([preexistentTodoList, newTodoListPayload])
     })
   })
 
-  describe('REMOVE_TODO_LIST handling', () => {
-    const newTodoListPayload = {
-      id: 0,
-    }
-
-    it('should add a new todo list', () => {
-      expect(
-        reducer([], {
-          type: 'ADD_TODO_LIST',
-          payload: newTodoListPayload
-        })
-      ).toEqual([newTodoListPayload])
-    })
-
+  describe('REMOVE_TODO_LIST', () => {
     it('should remove a preexistent todolist on state', () => {
       const preexistentTodoList = {
         id: 99,
@@ -58,9 +45,26 @@ describe('todo list reducer', () => {
       expect(
         reducer([preexistentTodoList], {
           type: 'REMOVE_TODO_LIST',
-          payload: { id: preexistentTodoList.id }
+          id: preexistentTodoList.id
         })
       ).toEqual([])
+    })
+  })
+
+  describe('CHANGE_TODO_LIST_TITLE', () => {
+    it('should change a preexistent todolist title', () => {
+      const preexistentTodoList = {
+        id: 99,
+        title: 'Bar'
+      }
+
+      expect(
+        reducer([preexistentTodoList], {
+          type: 'CHANGE_TODO_LIST_TITLE',
+          id: preexistentTodoList.id,
+          newTitle: 'Foo'
+        })
+      ).toEqual([{ id: 99, title: 'Foo' }])
     })
   })
 })

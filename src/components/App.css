@@ -35,24 +35,40 @@
 
 .TodoListsContainer {
   background-color: gold;
+  background-color: #dcd0c0;
   min-width: 360px;
+  min-height: 500px;
   width: 80%;
   padding: 10px 15px;
-
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .TodoList {
-  background-color: tomato;
+  background-color: #449c73;
+  border-radius: 3px;
   width: 80%;
   max-width: 512px;
   margin-top: 5px;
   margin-bottom: 5px;
   padding: 15px;
+  display: flex;
 }
 
-.TodoList__button {
-  float: right;
+.TransparentTextInput input {
+  font-weight: bold;
+  border: none;
+  background: transparent;
+  color: currentColor;
+}
+
+.TodoList button {
+  cursor: pointer;
+  border: none;
+  background: transparent;
+}
+
+.TodoList__delete-button {
+  margin-left: auto;
 }

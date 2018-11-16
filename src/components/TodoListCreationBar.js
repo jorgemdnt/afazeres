@@ -21,6 +21,7 @@ export class TodoListCreationBar extends React.Component {
   }
 
   onClickCreateTodoList(event) {
+    event.preventDefault()
     this.props.addTodoList(this.state.newTodoListTitle)
     this.setState({ newTodoListTitle: '' })
   }
@@ -28,10 +29,12 @@ export class TodoListCreationBar extends React.Component {
   render() {
     return (
       <div>
-        <input onChange={this.onChangeTitle.bind(this)} value={this.state.newTodoListTitle}></input>
-        <button onClick={this.onClickCreateTodoList.bind(this)}>
-          Add Todo List
-        </button>
+        <form>
+          <input onChange={this.onChangeTitle.bind(this)} value={this.state.newTodoListTitle}></input>
+          <button onClick={this.onClickCreateTodoList.bind(this)}>
+            Add Todo List
+          </button>
+        </form>
       </div>
     )
   }
