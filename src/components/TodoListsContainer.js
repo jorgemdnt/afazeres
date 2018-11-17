@@ -2,9 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import TodoList from './TodoList'
-import { removeTodoList, editTodoListTitle, addTodoItem } from '../actions'
 
-export const TodoListsContainer = ({ todoLists, removeTodoList, editTodoListTitle, addTodoItem }) => (
+export const TodoListsContainer = ({ todoLists }) => (
   <div className="TodoListsContainer">
     {todoLists.map(
       todoList =>
@@ -12,9 +11,6 @@ export const TodoListsContainer = ({ todoLists, removeTodoList, editTodoListTitl
           todoListId={todoList.todoListId}
           title={todoList.title}
           todoItems={todoList.todoItems}
-          removeTodoList={removeTodoList}
-          addTodoItem={addTodoItem}
-          editTodoListTitle={editTodoListTitle}
           key={todoList.todoListId} />
     )}
   </div>
@@ -22,10 +18,7 @@ export const TodoListsContainer = ({ todoLists, removeTodoList, editTodoListTitl
 
 TodoListsContainer.propTypes = {
   todoLists: PropTypes.arrayOf(Object).isRequired,
-  removeTodoList: PropTypes.func.isRequired,
-  editTodoListTitle: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => ({ todoLists: state.todoLists })
-const actions = { removeTodoList, editTodoListTitle, addTodoItem }
-export default connect(mapStateToProps, actions)(TodoListsContainer)
+export default connect(mapStateToProps)(TodoListsContainer)

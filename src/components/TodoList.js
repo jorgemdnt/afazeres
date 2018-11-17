@@ -1,8 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 import TransparentTextInput from './TransparentTextInput'
 import TodoItem from './TodoItem'
 import { DeleteIcon } from './Icons'
+import { removeTodoList, editTodoListTitle, addTodoItem } from '../actions'
 
 export class TodoList extends React.Component {
   constructor(props) {
@@ -61,4 +63,5 @@ TodoList.defaultProps = {
   todoItems: []
 }
 
-export default TodoList
+const actions = { removeTodoList, editTodoListTitle, addTodoItem }
+export default connect(null, actions)(TodoList)

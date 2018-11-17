@@ -1,6 +1,7 @@
 import React from 'react'
-import { mount } from 'enzyme'
+import { shallow } from 'enzyme'
 import { TodoListsContainer } from './TodoListsContainer'
+import TodoList from './TodoList'
 
 describe('TodoListsContainer', () => {
   it('renders received todo list', () => {
@@ -8,13 +9,8 @@ describe('TodoListsContainer', () => {
       todoListId: 0,
       title: 'Foo'
     }]
-    const appComponent = mount(
-      <TodoListsContainer
-        todoLists={todoLists}
-        editTodoListTitle={() => {}}
-        removeTodoList={() => {}} />
-    )
+    const appComponent = shallow(<TodoListsContainer todoLists={todoLists} />)
 
-    expect(appComponent.find('TodoList').length).toEqual(1)
+    expect(appComponent.find(TodoList).length).toEqual(1)
   })
 })
