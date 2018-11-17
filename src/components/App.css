@@ -54,13 +54,11 @@
   margin-bottom: 5px;
   padding: 15px;
   display: flex;
+  flex-direction: column;
 }
 
-.TransparentTextInput input {
-  font-weight: bold;
-  border: none;
-  background: transparent;
-  color: currentColor;
+.TodoList-header {
+  display: flex;
 }
 
 .TodoList button {
@@ -69,6 +67,24 @@
   background: transparent;
 }
 
-.TodoList__delete-button {
+.TodoList hr {
+  width: 83%;
+}
+
+.TodoList-delete-button {
   margin-left: auto;
+}
+
+.TodoList-new-todo {
+  display: flex;
+}
+
+.TransparentTextInput {
+  border: none;
+  background: transparent;
+  color: currentColor;
+}
+
+.TodoList-header .TransparentTextInput {
+  font-weight: bold;
 }

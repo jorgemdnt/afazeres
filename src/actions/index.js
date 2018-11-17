@@ -2,7 +2,7 @@ let nextTodoListId = 0
 export const addTodoList = title => (
   {
     type: 'ADD_TODO_LIST',
-    id: nextTodoListId++,
+    todoListId: nextTodoListId++,
     title
   }
 )
@@ -10,14 +10,24 @@ export const addTodoList = title => (
 export const removeTodoList = todoListId => (
   {
     type: 'REMOVE_TODO_LIST',
-    id: todoListId
+    todoListId: todoListId
   }
 )
 
-export const editTodoListTitle = (id, newTitle) => (
+export const editTodoListTitle = (todoListId, newTitle) => (
   {
     type: 'CHANGE_TODO_LIST_TITLE',
-    id,
+    todoListId,
     newTitle
+  }
+)
+
+let nextTodoItemId = 0
+export const addTodoItem = (todoListId, text) => (
+  {
+    type: 'ADD_TODO_ITEM',
+    todoListId,
+    todoItemId: nextTodoItemId++,
+    text
   }
 )

@@ -1,13 +1,27 @@
 const todoLists = (state = [], action) => {
   switch (action.type) {
     case 'ADD_TODO_LIST':
-      return state.concat({ id: action.id, title: action.title })
+      return state.concat({
+        todoListId: action.todoListId,
+        title: action.title,
+        todoItems: []
+      })
     case 'REMOVE_TODO_LIST':
-      return state.filter(todoList => todoList.id !== action.id)
+      return state.filter(todoList => todoList.todoListId !== action.todoListId)
     case 'CHANGE_TODO_LIST_TITLE':
       return state.map(todoList => {
-        if (todoList.id === action.id)
+        if (todoList.todoListId === action.todoListId)
           return { ...todoList, title: action.newTitle }
+        return todoList
+      })
+    case 'ADD_TODO_ITEM':
+      const { todoListId, todoItemId, text } = action
+      return state.map(todoList => {
+        if (todoList.todoListId === todoListId)
+          return {
+            ...todoList,
+            todoItems: todoList.todoItems.concat({ todoItemId, text })
+          }
         return todoList
       })
     default:

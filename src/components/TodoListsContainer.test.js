@@ -5,7 +5,7 @@ import { TodoListsContainer } from './TodoListsContainer'
 describe('TodoListsContainer', () => {
   it('renders received todo list', () => {
     const todoLists = [{
-      id: 0,
+      todoListId: 0,
       title: 'Foo'
     }]
     const appComponent = mount(

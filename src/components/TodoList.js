@@ -1,27 +1,64 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import TransparentTextInput from './TransparentTextInput'
-import DeleteIcon from './DeleteIcon'
+import TodoItem from './TodoItem'
+import { DeleteIcon } from './Icons'
 
-export const TodoList = ({ removeTodoList, editTodoListTitle, id, title = '', todos = [] }) => (
-  <div className="TodoList">
-    <TransparentTextInput value={title} onSave={newTitle => editTodoListTitle(id, newTitle)} />
-    <button onClick={() => removeTodoList(id)} className="TodoList__delete-button">
-      <DeleteIcon />
-    </button>
-  </div>
-)
+export class TodoList extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      newTodo: ''
+    }
+  }
+
+  onNewTodoEnter() {
+    this.props.addTodoItem(this.props.todoListId, this.state.newTodo)
+    this.setState({ newTodo: '' })
+  }
+
+  render () {
+    const { removeTodoList, editTodoListTitle, todoListId, title, todoItems } = this.props
+    return (
+      <div className="TodoList">
+        <div className="TodoList-header">
+          <TransparentTextInput
+            value={title}
+            onChange={newTitle => editTodoListTitle(todoListId, newTitle)} />
+          <button onClick={() => removeTodoList(todoListId)} className="TodoList-delete-button">
+            <DeleteIcon />
+          </button>
+        </div>
+        {todoItems.map(({ todoItemId, text }) =>
+          <TodoItem key={todoItemId} text={text} />)}
+        <div className="TodoList-new-todo">
+          <input type="checkbox" disabled />
+          <TransparentTextInput
+            value={this.state.newTodo}
+            onChange={newTodo => this.setState({ newTodo })}
+            placeholder="Add new To-do"
+            onEnterKeyPressed={this.onNewTodoEnter.bind(this)} />
+        </div>
+      </div>
+    )
+  }
+}
 
 TodoList.propTypes = {
-  id: PropTypes.number,
+  todoListId: PropTypes.number,
   title: PropTypes.string,
-  todos: PropTypes.arrayOf(
+  removeTodoList: PropTypes.func,
+  editTodoListTitle: PropTypes.func,
+  addTodoItem: PropTypes.func,
+  todoItems: PropTypes.arrayOf(
     PropTypes.shape({
       text: PropTypes.string
     })
-  ),
-  removeTodoList: PropTypes.func,
-  editTodoListTitle: PropTypes.func
+  )
+}
+
+TodoList.defaultProps = {
+  todoItems: []
 }
 
 export default TodoList
