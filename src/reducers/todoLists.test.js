@@ -9,7 +9,6 @@ describe('todo list reducer', () => {
     const expectedNewTodoList = {
       todoListId: 0,
       title: 'Foo',
-      todoItems: []
     }
 
     it('should add a new todo list', () => {
@@ -26,7 +25,6 @@ describe('todo list reducer', () => {
       const preexistentTodoList = {
         todoListId: 99,
         title: 'Bar',
-        todoItems: []
       }
 
       expect(
@@ -43,7 +41,6 @@ describe('todo list reducer', () => {
       const preexistentTodoList = {
         todoListId: 99,
         title: 'Bar',
-        todoItems: []
       }
 
       expect(
@@ -60,7 +57,6 @@ describe('todo list reducer', () => {
       const preexistentTodoList = {
         todoListId: 99,
         title: 'Bar',
-        todoItems: []
       }
 
       expect(
@@ -72,62 +68,6 @@ describe('todo list reducer', () => {
       ).toEqual([{
         todoListId: 99,
         title: 'Foo',
-        todoItems: []
-      }])
-    })
-  })
-
-  describe('ADD_TODO_ITEM', () => {
-    it('should add a todo item to a preexistent todolist', () => {
-      const preexistentTodoList = {
-        todoListId: 99,
-        title: 'Bar',
-        todoItems: []
-      }
-
-      expect(
-        reducer([preexistentTodoList], {
-          type: 'ADD_TODO_ITEM',
-          todoListId: preexistentTodoList.todoListId,
-          todoItemId: 88,
-          text: 'Do something'
-        })
-      ).toEqual([{
-        todoListId: 99,
-        title: 'Bar',
-        todoItems: [{
-          todoItemId: 88,
-          text: 'Do something'
-        }]
-      }])
-    })
-  })
-
-  describe('CHANGE_TODO_ITEM_TEXT', () => {
-    it('should change a todo item', () => {
-      const preexistentTodoList = {
-        todoListId: 99,
-        title: 'Bar',
-        todoItems: [{
-          todoItemId: 88,
-          text: 'Do something'
-        }]
-      }
-
-      expect(
-        reducer([preexistentTodoList], {
-          type: 'CHANGE_TODO_ITEM_TEXT',
-          todoListId: 99,
-          todoItemId: 88,
-          newText: 'Do another thing'
-        })
-      ).toEqual([{
-        todoListId: 99,
-        title: 'Bar',
-        todoItems: [{
-          todoItemId: 88,
-          text: 'Do another thing'
-        }]
       }])
     })
   })
