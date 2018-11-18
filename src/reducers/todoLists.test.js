@@ -102,4 +102,33 @@ describe('todo list reducer', () => {
       }])
     })
   })
+
+  describe('CHANGE_TODO_ITEM_TEXT', () => {
+    it('should change a todo item', () => {
+      const preexistentTodoList = {
+        todoListId: 99,
+        title: 'Bar',
+        todoItems: [{
+          todoItemId: 88,
+          text: 'Do something'
+        }]
+      }
+
+      expect(
+        reducer([preexistentTodoList], {
+          type: 'CHANGE_TODO_ITEM_TEXT',
+          todoListId: 99,
+          todoItemId: 88,
+          newText: 'Do another thing'
+        })
+      ).toEqual([{
+        todoListId: 99,
+        title: 'Bar',
+        todoItems: [{
+          todoItemId: 88,
+          text: 'Do another thing'
+        }]
+      }])
+    })
+  })
 })

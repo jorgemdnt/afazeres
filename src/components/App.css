@@ -75,7 +75,7 @@
   margin-left: auto;
 }
 
-.TodoList-new-todo {
+.TodoList-new-todo, .TodoItem {
   display: flex;
 }
 

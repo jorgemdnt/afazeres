@@ -46,4 +46,16 @@ describe('Todo List Actions', () => {
       expect(actions.addTodoItem(99, 'Do something')).toEqual(expectedAction)
     })
   })
+
+  describe('CHANGE_TODO_ITEM_TEXT', () => {
+    it('returns action that adds a todo item to a todo list', () => {
+      const expectedAction = {
+        type: 'CHANGE_TODO_ITEM_TEXT',
+        todoListId: 99,
+        todoItemId: 88,
+        newText: 'Do another thing'
+      }
+      expect(actions.editTodoItemText(99, 88, 'Do another thing')).toEqual(expectedAction)
+    })
+  })
 })

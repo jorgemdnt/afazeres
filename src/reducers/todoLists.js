@@ -24,6 +24,19 @@ const todoLists = (state = [], action) => {
           }
         return todoList
       })
+    case 'CHANGE_TODO_ITEM_TEXT':
+      return state.map(todoList => {
+        if (todoList.todoListId === action.todoListId)
+          return {
+            ...todoList,
+            todoItems: todoList
+              .todoItems
+              .map(todoItem =>
+                todoItem.todoItemId === action.todoItemId ?
+                  ({ ...todoItem, text: action.newText }) : todoItem)
+          }
+        return todoList
+      })
     default:
       return state
   }

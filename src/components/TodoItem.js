@@ -2,19 +2,20 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import TransparentTextInput from './TransparentTextInput'
 
-const TodoItem = ({ text }) => {
+export const TodoItem = ({ text, onChangeText }) => {
   return (
-    <div className="TodoList-todo-item">
+    <div className="TodoItem">
       <input type="checkbox" />
       <TransparentTextInput
+        className="TodoItem-text-input"
         value={text}
-        onEnterKeyPressed={console.log}
-        onChange={console.log} />
+        onChange={onChangeText} />
     </div>
   )
 }
 
 TodoItem.propTypes = {
+  onChangeText: PropTypes.func.isRequired,
   text: PropTypes.string
 }
 

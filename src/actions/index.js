@@ -31,3 +31,12 @@ export const addTodoItem = (todoListId, text) => (
     text
   }
 )
+
+export const editTodoItemText = (todoListId, todoItemId, newText) => (
+  {
+    type: 'CHANGE_TODO_ITEM_TEXT',
+    todoListId,
+    todoItemId,
+    newText
+  }
+)
