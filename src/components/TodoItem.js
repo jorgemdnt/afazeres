@@ -2,10 +2,14 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import TransparentTextInput from './TransparentTextInput'
 
-export const TodoItem = ({ text, onChangeText }) => {
+export const TodoItem = ({ done = false, text = '', onChangeText, onToggleCheckbox }) => {
   return (
     <div className="TodoItem">
-      <input type="checkbox" />
+      <input
+        checked={done}
+        onChange={onToggleCheckbox}
+        className="TodoItem-done-input"
+        type="checkbox" />
       <TransparentTextInput
         className="TodoItem-text-input"
         value={text}
@@ -15,6 +19,8 @@ export const TodoItem = ({ text, onChangeText }) => {
 }
 
 TodoItem.propTypes = {
+  onToggleCheckbox: PropTypes.func.isRequired,
+  done: PropTypes.bool,
   onChangeText: PropTypes.func.isRequired,
   text: PropTypes.string
 }

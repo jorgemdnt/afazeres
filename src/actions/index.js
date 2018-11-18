@@ -32,11 +32,17 @@ export const addTodoItem = (todoListId, text) => (
   }
 )
 
-export const editTodoItemText = (todoListId, todoItemId, newText) => (
+export const editTodoItemText = (todoItemId, newText) => (
   {
     type: 'CHANGE_TODO_ITEM_TEXT',
-    todoListId,
     todoItemId,
     newText
+  }
+)
+
+export const toggleTodoItem = todoItemId => (
+  {
+    type: 'TOGGLE_TODO_ITEM',
+    todoItemId
   }
 )

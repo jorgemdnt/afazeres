@@ -1,7 +1,7 @@
 import * as actions from './index'
 
 describe('Todo List Actions', () => {
-  describe('ADD_TODO_LIST', () => {
+  describe('addTodoList', () => {
     it('creates an action to add a new todo list', () => {
       const title = 'List Title'
 
@@ -14,7 +14,7 @@ describe('Todo List Actions', () => {
     })
   })
 
-  describe('REMOVE_TODO_LIST', () => {
+  describe('removeTodoList', () => {
     it('removes todo list with todoListId', () => {
       const expectedAction = {
         type: 'REMOVE_TODO_LIST',
@@ -24,7 +24,7 @@ describe('Todo List Actions', () => {
     })
   })
 
-  describe('CHANGE_TODO_LIST_TITLE', () => {
+  describe('editTodoListTitle', () => {
     it('returns action that changes title', () => {
       const expectedAction = {
         type: 'CHANGE_TODO_LIST_TITLE',
@@ -35,7 +35,7 @@ describe('Todo List Actions', () => {
     })
   })
 
-  describe('ADD_TODO_ITEM', () => {
+  describe('addTodoItem', () => {
     it('returns action that adds a todo item to a todo list', () => {
       const expectedAction = {
         type: 'ADD_TODO_ITEM',
@@ -47,15 +47,24 @@ describe('Todo List Actions', () => {
     })
   })
 
-  describe('CHANGE_TODO_ITEM_TEXT', () => {
+  describe('editTodoItemText', () => {
     it('returns action that adds a todo item to a todo list', () => {
       const expectedAction = {
         type: 'CHANGE_TODO_ITEM_TEXT',
-        todoListId: 99,
         todoItemId: 88,
         newText: 'Do another thing'
       }
-      expect(actions.editTodoItemText(99, 88, 'Do another thing')).toEqual(expectedAction)
+      expect(actions.editTodoItemText(88, 'Do another thing')).toEqual(expectedAction)
+    })
+  })
+
+  describe('toggleTodoItem', () => {
+    it('returns expected action', () => {
+      const expectedAction = {
+        type: 'TOGGLE_TODO_ITEM',
+        todoItemId: 88
+      }
+      expect(actions.toggleTodoItem(88)).toEqual(expectedAction)
     })
   })
 })

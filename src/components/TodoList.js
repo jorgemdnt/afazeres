@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import TransparentTextInput from './TransparentTextInput'
 import TodoItem from './TodoItem'
 import { DeleteIcon } from './Icons'
-import { removeTodoList, editTodoListTitle, addTodoItem, editTodoItemText } from '../actions'
+import { removeTodoList, editTodoListTitle, addTodoItem, editTodoItemText, toggleTodoItem } from '../actions'
 
 export class TodoList extends React.Component {
   constructor(props) {
@@ -24,6 +24,7 @@ export class TodoList extends React.Component {
       removeTodoList,
       editTodoListTitle,
       editTodoItemText,
+      toggleTodoItem,
       todoListId,
       title,
       todoItems
@@ -39,10 +40,12 @@ export class TodoList extends React.Component {
             <DeleteIcon />
           </button>
         </div>
-        {todoItems.map(({ todoItemId, text }) =>
+        {todoItems.map(({ todoItemId, text, done }) =>
           <TodoItem
-            onChangeText={newText => editTodoItemText(todoListId, todoItemId, newText)}
             key={todoItemId}
+            onToggleCheckbox={() => toggleTodoItem(todoItemId)}
+            done={done}
+            onChangeText={newText => editTodoItemText(todoItemId, newText)}
             text={text} />)}
         <div className="TodoList-new-todo">
           <input type="checkbox" disabled />
@@ -64,6 +67,7 @@ TodoList.propTypes = {
   editTodoListTitle: PropTypes.func,
   addTodoItem: PropTypes.func,
   editTodoItemText: PropTypes.func,
+  toggleTodoItem: PropTypes.func,
   todoItems: PropTypes.arrayOf(
     PropTypes.shape({
       text: PropTypes.string
@@ -75,5 +79,5 @@ TodoList.defaultProps = {
   todoItems: []
 }
 
-const actions = { removeTodoList, editTodoListTitle, addTodoItem, editTodoItemText }
+const actions = { removeTodoList, editTodoListTitle, addTodoItem, editTodoItemText, toggleTodoItem }
 export default connect(null, actions)(TodoList)
