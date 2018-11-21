@@ -1,3 +1,10 @@
 language: node_js
 node_js:
-  - "8.11.1"
+  - 8.11.1
+deploy:
+  provider: heroku
+  api_key:
+    secure: oNACL4/2YdbBvIPgIfHW+bJcgcETfZl8jMj/byN/IOtedAo9wANl8tHkez0H0g3ALrZ9J1wZMlFxaZS0n8azDl4n/H7XAncrVwq+wyBTl/smkGiyk30pzrqZeYp0VfnUrlxp0HE4In8SoY7KIuI4wnRem85HzPWYMDtPE7L61+9oQy/eUV8YhVL4NhOgaghwAy0a9QXCB5maeDv9oq1sXp2B9whFJZ/ZDMA+5vbXo7XmlmoWlYH3SKLq4/vTXfa0j+AitlsQ4uy8u7jwiFPJHZ4i0cFYDGpCjs3xBNadl6tog1FnbaqGmhqNXYa1craGsilxfQBNotmea5AQbXyRyU5qcrGwKt2l2+JgWxm3EZRhp5qnYdt5Icf4Tlxh40uzKFfQniCnrrBK1PMuTJK+cq4GpdzVyNEqBoDXTZ11+XDrEJUoBJBfNgOZAW/rpIYWlbn66jLxeb0SKsCZgXgABMY3dvGDvIzBrIY6KNZF/9pXh6ynFyKiSjiLGWx3wKAWoyCVC0teuY6CD0JStppFgJqOJA7jLsU6307K0QOKmWrpm6x5DB1nhjJNT8n4PU3WPHlGvZ9M5Xgf1roKGYzD4Sj7HQZys7/t3DTKoKvJCbEDwM+IqhS1M2VXkyqziavAFNoawFYufEbh4CHMZY2q3VhC/pEiFGhXh47VD5Rt9xw=
+  app: afazer
+  on:
+    repo: jorgemdnt/afazeres
