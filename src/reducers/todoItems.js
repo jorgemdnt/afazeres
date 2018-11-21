@@ -21,6 +21,8 @@ const todoItems = (state = [], action) => {
         todoItem => todoItem.todoItemId === action.todoItemId,
         todoItem => ({ ...todoItem, done: !todoItem.done })
       )
+    case 'REMOVE_TODO_ITEM':
+      return state.filter(todoItem => todoItem.todoItemId !== action.todoItemId)
     default:
       return state
   }

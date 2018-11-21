@@ -67,4 +67,14 @@ describe('Todo List Actions', () => {
       expect(actions.toggleTodoItem(88)).toEqual(expectedAction)
     })
   })
+
+  describe('removeTodoItem', () => {
+    it('returns expected action', () => {
+      const expectedAction = {
+        type: 'REMOVE_TODO_ITEM',
+        todoItemId: 88
+      }
+      expect(actions.removeTodoItem(88)).toEqual(expectedAction)
+    })
+  })
 })

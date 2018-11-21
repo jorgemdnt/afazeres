@@ -25,7 +25,7 @@ describe('todo items reducer', () => {
 
   describe('CHANGE_TODO_ITEM_TEXT', () => {
     it('should change a todo item', () => {
-      const preexistentTodoItem = {
+      const todoItem = {
         todoListId: 99,
         todoItemId: 88,
         text: 'Do something',
@@ -33,7 +33,7 @@ describe('todo items reducer', () => {
       }
 
       expect(
-        reducer([preexistentTodoItem], {
+        reducer([todoItem], {
           type: 'CHANGE_TODO_ITEM_TEXT',
           todoItemId: 88,
           newText: 'Do another thing'
@@ -49,7 +49,7 @@ describe('todo items reducer', () => {
 
   describe('TOGGLE_TODO_ITEM', () => {
     it('should change if item is done to true when it is false', () => {
-      const preexistentTodoItem = {
+      const todoItem = {
         todoListId: 99,
         todoItemId: 88,
         text: 'Do something',
@@ -57,7 +57,7 @@ describe('todo items reducer', () => {
       }
 
       expect(
-        reducer([preexistentTodoItem], {
+        reducer([todoItem], {
           type: 'TOGGLE_TODO_ITEM',
           todoItemId: 88,
         })
@@ -70,7 +70,7 @@ describe('todo items reducer', () => {
     })
 
     it('should change if item is done to false when it is true', () => {
-      const preexistentTodoItem = {
+      const todoItem = {
         todoListId: 99,
         todoItemId: 88,
         text: 'Do something',
@@ -78,7 +78,7 @@ describe('todo items reducer', () => {
       }
 
       expect(
-        reducer([preexistentTodoItem], {
+        reducer([todoItem], {
           type: 'TOGGLE_TODO_ITEM',
           todoItemId: 88,
         })
@@ -88,6 +88,30 @@ describe('todo items reducer', () => {
         text: 'Do something',
         done: false
       }])
+    })
+  })
+
+  describe('REMOVE_TODO_ITEM', () => {
+    it('should remove a todo item', () => {
+      const todoItem = {
+        todoListId: 99,
+        todoItemId: 88,
+        text: 'Do something',
+        done: false
+      }
+      const anotherTodoItem = {
+        todoListId: 99,
+        todoItemId: 77,
+        text: 'Do another thing',
+        done: false
+      }
+
+      expect(
+        reducer([todoItem, anotherTodoItem], {
+          type: 'REMOVE_TODO_ITEM',
+          todoItemId: 77,
+        })
+      ).toEqual([todoItem])
     })
   })
 })

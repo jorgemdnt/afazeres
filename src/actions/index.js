@@ -46,3 +46,10 @@ export const toggleTodoItem = todoItemId => (
     todoItemId
   }
 )
+
+export const removeTodoItem = todoItemId => (
+  {
+    type: 'REMOVE_TODO_ITEM',
+    todoItemId
+  }
+)

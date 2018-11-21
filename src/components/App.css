@@ -73,6 +73,7 @@
 
 .TodoList-delete-button {
   margin-left: auto;
+  color: #FFF;
 }
 
 .TodoList-new-todo, .TodoItem {

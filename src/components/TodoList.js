@@ -4,7 +4,14 @@ import { connect } from 'react-redux'
 import TransparentTextInput from './TransparentTextInput'
 import TodoItem from './TodoItem'
 import { DeleteIcon } from './Icons'
-import { removeTodoList, editTodoListTitle, addTodoItem, editTodoItemText, toggleTodoItem } from '../actions'
+import {
+  removeTodoList,
+  editTodoListTitle,
+  addTodoItem,
+  editTodoItemText,
+  toggleTodoItem,
+  removeTodoItem
+} from '../actions'
 
 export class TodoList extends React.Component {
   constructor(props) {
@@ -25,6 +32,7 @@ export class TodoList extends React.Component {
       editTodoListTitle,
       editTodoItemText,
       toggleTodoItem,
+      removeTodoItem,
       todoListId,
       title,
       todoItems
@@ -43,6 +51,7 @@ export class TodoList extends React.Component {
         {todoItems.map(({ todoItemId, text, done }) =>
           <TodoItem
             key={todoItemId}
+            onClickRemove={() => removeTodoItem(todoItemId)}
             onToggleCheckbox={() => toggleTodoItem(todoItemId)}
             done={done}
             onChangeText={newText => editTodoItemText(todoItemId, newText)}
@@ -79,5 +88,5 @@ TodoList.defaultProps = {
   todoItems: []
 }
 
-const actions = { removeTodoList, editTodoListTitle, addTodoItem, editTodoItemText, toggleTodoItem }
+const actions = { removeTodoList, editTodoListTitle, addTodoItem, editTodoItemText, toggleTodoItem, removeTodoItem }
 export default connect(null, actions)(TodoList)

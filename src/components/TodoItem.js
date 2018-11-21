@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import TransparentTextInput from './TransparentTextInput'
 
-export const TodoItem = ({ done = false, text = '', onChangeText, onToggleCheckbox }) => {
+export const TodoItem = ({ done = false, text = '', onChangeText, onToggleCheckbox, onClickRemove }) => {
   return (
     <div className="TodoItem">
       <input
@@ -14,11 +14,15 @@ export const TodoItem = ({ done = false, text = '', onChangeText, onToggleCheckb
         className="TodoItem-text-input"
         value={text}
         onChange={onChangeText} />
+      <button onClick={onClickRemove} className="TodoList-delete-button">
+        <i>remove</i>
+      </button>
     </div>
   )
 }
 
 TodoItem.propTypes = {
+  onClickRemove: PropTypes.func.isRequired,
   onToggleCheckbox: PropTypes.func.isRequired,
   done: PropTypes.bool,
   onChangeText: PropTypes.func.isRequired,
