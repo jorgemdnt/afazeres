@@ -1,4 +1,4 @@
-# Afazeres To-do App ![](https://travis-ci.org/jorgemdnt/afazeres.svg?branch=master)
+# Afazeres To-do App ![Travis-CI](https://travis-ci.org/jorgemdnt/afazeres.svg?branch=master) [![Heroku](http://heroku-badge.herokuapp.com/?app=afazer&style=flat&svg=1)](https://afazer.herokuapp.com/)
 
 ## Available Scripts
 
