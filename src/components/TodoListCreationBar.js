@@ -4,10 +4,6 @@ import PropTypes from 'prop-types'
 import { addTodoList } from '../actions'
 
 export class TodoListCreationBar extends React.Component {
-  static propTypes = {
-    addTodoList: PropTypes.func.isRequired
-  }
-
   constructor(props) {
     super(props)
 
@@ -38,6 +34,10 @@ export class TodoListCreationBar extends React.Component {
       </div>
     )
   }
+}
+
+TodoListCreationBar.propTypes = {
+  addTodoList: PropTypes.func.isRequired
 }
 
 export default connect(null, { addTodoList })(TodoListCreationBar)

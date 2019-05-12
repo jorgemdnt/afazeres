@@ -37,6 +37,17 @@ export const TodoListsContainer = ({
 
 TodoListsContainer.propTypes = {
   todoLists: PropTypes.arrayOf(Object).isRequired,
+  removeTodoList: PropTypes.func.isRequired,
+  editTodoListTitle: PropTypes.func.isRequired,
+  addTodoItem: PropTypes.func.isRequired,
+  editTodoItemText: PropTypes.func.isRequired,
+  toggleTodoItem: PropTypes.func.isRequired,
+  removeTodoItem: PropTypes.func.isRequired,
+  todoItems: PropTypes.arrayOf(
+    PropTypes.shape({
+      text: PropTypes.string
+    })
+  )
 }
 
 const mapStateToProps = state => ({ todoLists: state.todoLists, todoItems: state.todoItems })

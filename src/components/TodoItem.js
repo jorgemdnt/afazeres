@@ -2,13 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import TransparentTextInput from './TransparentTextInput'
 
-export const DebugComponent = Component => (
-  props => {
-    console.log(props)
-    return <component {...props} />
-  }
-)
-
 export const TodoItem = ({
   done = false,
   text = '',

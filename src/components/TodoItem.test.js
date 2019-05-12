@@ -45,7 +45,7 @@ describe('TodoItem', () => {
     expect(editTodoItemTextMock).toHaveBeenCalledWith(todoListId, todoItemId, 'Do something')
   })
 
-  it('Passes toggleTodoItem to the checkbox input', () => {
+  it('calls toggleTodoItem with the correct params', () => {
     const component = mount(
       <TodoItem
         todoListId={todoListId}
@@ -62,7 +62,7 @@ describe('TodoItem', () => {
   })
 
 
-  it('Passes toggleTodoItem to the checkbox input', () => {
+  it('calls removeTodoItem with the correct params', () => {
     const component = mount(
       <TodoItem
         todoListId={todoListId}

@@ -64,7 +64,9 @@ TodoList.propTypes = {
   removeTodoItem: PropTypes.func.isRequired,
   todoItems: PropTypes.arrayOf(
     PropTypes.shape({
-      text: PropTypes.string
+      text: PropTypes.string,
+      todoItemId: PropTypes.number,
+      done: PropTypes.bool
     })
   )
 }
