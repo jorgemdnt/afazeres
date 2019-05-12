@@ -19,7 +19,6 @@
     "dotenv-expand": "4.2.0",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.13.0",
-    "eslint": "5.6.0",
     "eslint-config-react-app": "^3.0.5",
     "eslint-loader": "2.1.1",
     "eslint-plugin-flowtype": "2.50.1",
@@ -122,5 +121,9 @@
     "presets": [
       "react-app"
     ]
+  },
+  "devDependencies": {
+    "eslint": "^5.6.0",
+    "eslint-plugin-jest": "^22.5.1"
   }
 }
