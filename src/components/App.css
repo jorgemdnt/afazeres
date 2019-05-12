@@ -57,7 +57,7 @@
   flex-direction: column;
 }
 
-.TodoList-header {
+.TodoListHeader {
   display: flex;
 }
 
@@ -73,7 +73,7 @@
 
 .TodoList-delete-button {
   margin-left: auto;
-  color: #FFF;
+  color: #BEF2C1;
 }
 
 .TodoList-new-todo, .TodoItem {
@@ -86,6 +86,10 @@
   color: currentColor;
 }
 
-.TodoList-header .TransparentTextInput {
+.TodoListHeader .TransparentTextInput {
   font-weight: bold;
+}
+
+.TodoItem .TransparentTextInput {
+  width: 100%;
 }

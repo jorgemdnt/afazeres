@@ -4,10 +4,10 @@ const todoItems = (state = [], action) => {
   switch (action.type) {
     case 'ADD_TODO_ITEM':
       return state.concat({
-        todoListId: action.todoListId,
         todoItemId: action.todoItemId,
         text: action.text,
-        done: false
+        done: false,
+        deadline: null
       })
     case 'CHANGE_TODO_ITEM_TEXT':
       return updateItemInList(
@@ -23,9 +23,26 @@ const todoItems = (state = [], action) => {
       )
     case 'REMOVE_TODO_ITEM':
       return state.filter(todoItem => todoItem.todoItemId !== action.todoItemId)
+    case 'CHANGE_TODO_ITEM_DEADLINE':
+      return updateItemInList(
+        state,
+        todoItem => todoItem.todoItemId === action.todoItemId,
+        todoItem => ({ ...todoItem, deadline: action.newDeadline })
+      )
     default:
       return state
   }
 }
 
-export default todoItems
+const todoListItems = (state = {}, action) => {
+  if (action.type) {
+    return {
+      ...state,
+      [action.todoListId]: todoItems(state[action.todoListId], action)
+    }
+  } else {
+    return state
+  }
+}
+
+export default todoListItems

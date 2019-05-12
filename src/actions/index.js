@@ -32,24 +32,36 @@ export const addTodoItem = (todoListId, text) => (
   }
 )
 
-export const editTodoItemText = (todoItemId, newText) => (
+export const editTodoItemText = (todoListId, todoItemId, newText) => (
   {
     type: 'CHANGE_TODO_ITEM_TEXT',
+    todoListId,
     todoItemId,
     newText
   }
 )
 
-export const toggleTodoItem = todoItemId => (
+export const toggleTodoItem = (todoListId, todoItemId) => (
   {
     type: 'TOGGLE_TODO_ITEM',
+    todoListId,
     todoItemId
   }
 )
 
-export const removeTodoItem = todoItemId => (
+export const removeTodoItem = (todoListId, todoItemId) => (
   {
     type: 'REMOVE_TODO_ITEM',
+    todoListId,
     todoItemId
+  }
+)
+
+export const changeTodoItemDeadline = (todoListId, todoItemId, newDeadline) => (
+  {
+    type: 'CHANGE_TODO_ITEM_DEADLINE',
+    todoListId,
+    todoItemId,
+    newDeadline
   }
 )

@@ -1,17 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import TransparentTextInput from './TransparentTextInput'
 import TodoItem from './TodoItem'
-import { DeleteIcon } from './Icons'
-import {
-  removeTodoList,
-  editTodoListTitle,
-  addTodoItem,
-  editTodoItemText,
-  toggleTodoItem,
-  removeTodoItem
-} from '../actions'
+import TodoListHeader from './TodoListHeader'
+import NewTodoItem from './NewTodoItem'
 
 export class TodoList extends React.Component {
   constructor(props) {
@@ -28,6 +19,7 @@ export class TodoList extends React.Component {
 
   render () {
     const {
+      addTodoItem,
       removeTodoList,
       editTodoListTitle,
       editTodoItemText,
@@ -40,43 +32,36 @@ export class TodoList extends React.Component {
 
     return (
       <div className="TodoList">
-        <div className="TodoList-header">
-          <TransparentTextInput
-            value={title}
-            onChange={newTitle => editTodoListTitle(todoListId, newTitle)} />
-          <button onClick={() => removeTodoList(todoListId)} className="TodoList-delete-button">
-            <DeleteIcon />
-          </button>
-        </div>
+        <TodoListHeader
+          title={title}
+          removeTodoList={removeTodoList}
+          editTodoListTitle={editTodoListTitle}
+          todoListId={todoListId} />
         {todoItems.map(({ todoItemId, text, done }) =>
           <TodoItem
             key={todoItemId}
-            onClickRemove={() => removeTodoItem(todoItemId)}
-            onToggleCheckbox={() => toggleTodoItem(todoItemId)}
+            todoListId={todoListId}
+            todoItemId={todoItemId}
             done={done}
-            onChangeText={newText => editTodoItemText(todoItemId, newText)}
-            text={text} />)}
-        <div className="TodoList-new-todo">
-          <input type="checkbox" disabled />
-          <TransparentTextInput
-            value={this.state.newTodo}
-            onChange={newTodo => this.setState({ newTodo })}
-            placeholder="Add new To-do"
-            onEnterKeyPressed={this.onNewTodoEnter.bind(this)} />
-        </div>
+            text={text}
+            removeTodoItem={removeTodoItem}
+            toggleTodoItem={toggleTodoItem}
+            editTodoItemText={editTodoItemText} />)}
+        <NewTodoItem todoListId={todoListId} addTodoItem={addTodoItem} />
       </div>
     )
   }
 }
 
 TodoList.propTypes = {
-  todoListId: PropTypes.number,
+  todoListId: PropTypes.number.isRequired,
   title: PropTypes.string,
-  removeTodoList: PropTypes.func,
-  editTodoListTitle: PropTypes.func,
-  addTodoItem: PropTypes.func,
-  editTodoItemText: PropTypes.func,
-  toggleTodoItem: PropTypes.func,
+  removeTodoList: PropTypes.func.isRequired,
+  editTodoListTitle: PropTypes.func.isRequired,
+  addTodoItem: PropTypes.func.isRequired,
+  editTodoItemText: PropTypes.func.isRequired,
+  toggleTodoItem: PropTypes.func.isRequired,
+  removeTodoItem: PropTypes.func.isRequired,
   todoItems: PropTypes.arrayOf(
     PropTypes.shape({
       text: PropTypes.string
@@ -88,5 +73,4 @@ TodoList.defaultProps = {
   todoItems: []
 }
 
-const actions = { removeTodoList, editTodoListTitle, addTodoItem, editTodoItemText, toggleTodoItem, removeTodoItem }
-export default connect(null, actions)(TodoList)
+export default TodoList

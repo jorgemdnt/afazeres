@@ -3,68 +3,78 @@ import { mount, shallow } from 'enzyme'
 import { TodoItem } from './TodoItem'
 
 describe('TodoItem', () => {
-  let onChangeTextMock
-  let onToggleCheckboxMock
-  let onClickRemoveMock
+  const todoListId = 666
+  const todoItemId = 888
+  let editTodoItemTextMock
+  let toggleTodoItemMock
+  let removeTodoItemMock
 
   beforeEach(() => {
-    onChangeTextMock = jest.fn()
-    onToggleCheckboxMock = jest.fn()
-    onClickRemoveMock = jest.fn()
+    editTodoItemTextMock = jest.fn()
+    toggleTodoItemMock = jest.fn()
+    removeTodoItemMock = jest.fn()
   })
 
   it('renders an input containing the text', () => {
     const component = shallow(
       <TodoItem
+        todoListId={todoListId}
+        todoItemId={todoItemId}
         text={'Do something'}
-        onToggleCheckbox={onToggleCheckboxMock}
-        onClickRemove={onClickRemoveMock}
-        onChangeText={onChangeTextMock} />
+        toggleTodoItem={toggleTodoItemMock}
+        removeTodoItem={removeTodoItemMock}
+        editTodoItemText={editTodoItemTextMock} />
     )
 
     expect(component.find('TransparentTextInput').props().value).toEqual('Do something')
   })
 
-  it('Passes onChangeText to TransparentTextInput', () => {
+  it('Passes editTodoItemText to TransparentTextInput', () => {
     const component = mount(
       <TodoItem
+        todoListId={todoListId}
+        todoItemId={todoItemId}
         text={'Do something'}
-        onToggleCheckbox={onToggleCheckboxMock}
-        onClickRemove={onClickRemoveMock}
-        onChangeText={onChangeTextMock} />
+        toggleTodoItem={toggleTodoItemMock}
+        removeTodoItem={removeTodoItemMock}
+        editTodoItemText={editTodoItemTextMock} />
     )
 
-    component.find('.TodoItem-text-input').simulate('change')
+    component.find('.TodoItem-text-input').simulate('change', { target: { value: 'Do something' } })
 
-    expect(onChangeTextMock).toHaveBeenCalledWith('Do something')
+    expect(editTodoItemTextMock).toHaveBeenCalledWith(todoListId, todoItemId, 'Do something')
   })
 
-  it('Passes onToggleCheckbox to the checkbox input', () => {
+  it('Passes toggleTodoItem to the checkbox input', () => {
     const component = mount(
       <TodoItem
+        todoListId={todoListId}
+        todoItemId={todoItemId}
         text={'Do something'}
-        onToggleCheckbox={onToggleCheckboxMock}
-        onClickRemove={onClickRemoveMock}
-        onChangeText={onChangeTextMock} />
+        toggleTodoItem={toggleTodoItemMock}
+        removeTodoItem={removeTodoItemMock}
+        editTodoItemText={editTodoItemTextMock} />
     )
 
     component.find('.TodoItem-done-input').simulate('change')
 
-    expect(onToggleCheckboxMock).toHaveBeenCalled()
+    expect(toggleTodoItemMock).toHaveBeenCalledWith(todoListId, todoItemId)
   })
 
 
-  it('Passes onToggleCheckbox to the checkbox input', () => {
+  it('Passes toggleTodoItem to the checkbox input', () => {
     const component = mount(
       <TodoItem
+        todoListId={todoListId}
+        todoItemId={todoItemId}
         text={'Do something'}
-        onToggleCheckbox={onToggleCheckboxMock}
-        onClickRemove={onClickRemoveMock}
-        onChangeText={onChangeTextMock} />
+        toggleTodoItem={toggleTodoItemMock}
+        removeTodoItem={removeTodoItemMock}
+        editTodoItemText={editTodoItemTextMock} />
     )
 
     component.find('.TodoList-delete-button').simulate('click')
 
-    expect(onClickRemoveMock).toHaveBeenCalled()
+    expect(removeTodoItemMock).toHaveBeenCalledWith(todoListId, todoItemId)
   })
 })

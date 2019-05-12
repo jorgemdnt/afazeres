@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-class TransparentTextInput extends React.Component {
+class TransparentTextInput extends React.PureComponent {
   onChange(event) {
     this.props.onChange(event.target.value)
   }

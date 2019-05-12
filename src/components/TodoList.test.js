@@ -4,19 +4,49 @@ import { TodoList } from './TodoList'
 
 describe('TodoList', () => {
   let removeTodoListMock
+  let addTodoItemMock
+  let removeTodoItemMock
+  let toggleTodoItemMock
+  let editTodoItemTextMock
+  let editTodoListTitleMock
 
   beforeEach(() => {
+    editTodoListTitleMock = jest.fn()
     removeTodoListMock = jest.fn()
+    addTodoItemMock = jest.fn()
+    removeTodoItemMock = jest.fn()
+    toggleTodoItemMock = jest.fn()
+    editTodoItemTextMock = jest.fn()
   })
 
   it('renders with a title', () => {
-    const todoList = shallow(<TodoList title={'Foo'} />)
+    const todoList = shallow(
+      <TodoList
+        title={'Foo'}
+        todoListId={99}
+        editTodoItemText={editTodoItemTextMock}
+        toggleTodoItem={toggleTodoItemMock}
+        removeTodoItem={removeTodoItemMock}
+        addTodoItem={addTodoItemMock}
+        editTodoListTitle={editTodoListTitleMock}
+        removeTodoList={removeTodoListMock} />
+    )
 
-    expect(todoList.find('TransparentTextInput').at(0).props().value).toEqual('Foo')
+    expect(todoList.find('TodoListHeader').props().title).toEqual('Foo')
   })
 
   it('removes todo list when remove button is clicked', () => {
-    const todoList = mount(<TodoList title={'Foo'} todoListId={99} removeTodoList={removeTodoListMock} />)
+    const todoList = mount(
+      <TodoList
+        title={'Foo'}
+        todoListId={99}
+        editTodoItemText={editTodoItemTextMock}
+        toggleTodoItem={toggleTodoItemMock}
+        removeTodoItem={removeTodoItemMock}
+        addTodoItem={addTodoItemMock}
+        editTodoListTitle={editTodoListTitleMock}
+        removeTodoList={removeTodoListMock} />
+    )
 
     todoList.find('.TodoList-delete-button').simulate('click')
 
@@ -35,6 +65,11 @@ describe('TodoList', () => {
       <TodoList
         title={'Foo'}
         todoListId={99}
+        editTodoItemText={editTodoItemTextMock}
+        toggleTodoItem={toggleTodoItemMock}
+        removeTodoItem={removeTodoItemMock}
+        addTodoItem={addTodoItemMock}
+        editTodoListTitle={editTodoListTitleMock}
         removeTodoList={removeTodoListMock}
         todoItems={todos} />
     )

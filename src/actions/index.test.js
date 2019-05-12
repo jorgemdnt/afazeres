@@ -34,16 +34,20 @@ describe('Todo List Actions', () => {
       expect(actions.editTodoListTitle(99, 'Foo')).toEqual(expectedAction)
     })
   })
+})
+
+describe('Todo Item Actions', () => {
+  const todoListId = 99
 
   describe('addTodoItem', () => {
     it('returns action that adds a todo item to a todo list', () => {
       const expectedAction = {
         type: 'ADD_TODO_ITEM',
-        todoListId: 99,
+        todoListId,
         todoItemId: 0,
         text: 'Do something'
       }
-      expect(actions.addTodoItem(99, 'Do something')).toEqual(expectedAction)
+      expect(actions.addTodoItem(todoListId, 'Do something')).toEqual(expectedAction)
     })
   })
 
@@ -51,10 +55,11 @@ describe('Todo List Actions', () => {
     it('returns action that adds a todo item to a todo list', () => {
       const expectedAction = {
         type: 'CHANGE_TODO_ITEM_TEXT',
+        todoListId,
         todoItemId: 88,
         newText: 'Do another thing'
       }
-      expect(actions.editTodoItemText(88, 'Do another thing')).toEqual(expectedAction)
+      expect(actions.editTodoItemText(todoListId, 88, 'Do another thing')).toEqual(expectedAction)
     })
   })
 
@@ -62,9 +67,10 @@ describe('Todo List Actions', () => {
     it('returns expected action', () => {
       const expectedAction = {
         type: 'TOGGLE_TODO_ITEM',
+        todoListId,
         todoItemId: 88
       }
-      expect(actions.toggleTodoItem(88)).toEqual(expectedAction)
+      expect(actions.toggleTodoItem(todoListId, 88)).toEqual(expectedAction)
     })
   })
 
@@ -72,9 +78,22 @@ describe('Todo List Actions', () => {
     it('returns expected action', () => {
       const expectedAction = {
         type: 'REMOVE_TODO_ITEM',
+        todoListId,
         todoItemId: 88
       }
-      expect(actions.removeTodoItem(88)).toEqual(expectedAction)
+      expect(actions.removeTodoItem(todoListId, 88)).toEqual(expectedAction)
+    })
+  })
+
+  describe('changeTodoItemDeadline', () => {
+    it('returns expected action', () => {
+      const expectedAction = {
+        type: 'CHANGE_TODO_ITEM_DEADLINE',
+        todoListId,
+        todoItemId: 88,
+        newDeadline: '2018-11-27'
+      }
+      expect(actions.changeTodoItemDeadline(todoListId, 88, '2018-11-27')).toEqual(expectedAction)
     })
   })
 })
