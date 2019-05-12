@@ -43,11 +43,7 @@ TodoListsContainer.propTypes = {
   editTodoItemText: PropTypes.func.isRequired,
   toggleTodoItem: PropTypes.func.isRequired,
   removeTodoItem: PropTypes.func.isRequired,
-  todoItems: PropTypes.arrayOf(
-    PropTypes.shape({
-      text: PropTypes.string
-    })
-  )
+  todoItems: PropTypes.object.isRequired
 }
 
 const mapStateToProps = state => ({ todoLists: state.todoLists, todoItems: state.todoItems })
