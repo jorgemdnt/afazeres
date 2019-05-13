@@ -6,6 +6,27 @@ import TodoListHeader from '../TodoListHeader'
 import NewTodoItem from '../NewTodoItem'
 
 export class TodoList extends React.PureComponent {
+  static propTypes = {
+    todoListId: PropTypes.number.isRequired,
+    title: PropTypes.string,
+    removeTodoList: PropTypes.func.isRequired,
+    editTodoListTitle: PropTypes.func.isRequired,
+    addTodoItem: PropTypes.func.isRequired,
+    editTodoItemText: PropTypes.func.isRequired,
+    toggleTodoItem: PropTypes.func.isRequired,
+    removeTodoItem: PropTypes.func.isRequired,
+    todoItems: PropTypes.arrayOf(
+      PropTypes.shape({
+        text: PropTypes.string,
+        todoItemId: PropTypes.number,
+        done: PropTypes.bool
+      })
+    )
+  }
+  static defaultProps = {
+    todoItems: []
+  }
+
   constructor(props) {
     super(props)
     this.state = {
@@ -52,28 +73,6 @@ export class TodoList extends React.PureComponent {
       </div>
     )
   }
-}
-
-TodoList.propTypes = {
-  todoListId: PropTypes.number.isRequired,
-  title: PropTypes.string,
-  removeTodoList: PropTypes.func.isRequired,
-  editTodoListTitle: PropTypes.func.isRequired,
-  addTodoItem: PropTypes.func.isRequired,
-  editTodoItemText: PropTypes.func.isRequired,
-  toggleTodoItem: PropTypes.func.isRequired,
-  removeTodoItem: PropTypes.func.isRequired,
-  todoItems: PropTypes.arrayOf(
-    PropTypes.shape({
-      text: PropTypes.string,
-      todoItemId: PropTypes.number,
-      done: PropTypes.bool
-    })
-  )
-}
-
-TodoList.defaultProps = {
-  todoItems: []
 }
 
 export default TodoList

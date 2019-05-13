@@ -120,12 +120,15 @@
     ]
   },
   "babel": {
+    "plugins": ["transform-class-properties"],
     "presets": [
       "react-app"
     ]
   },
   "devDependencies": {
+    "babel-plugin-transform-class-properties": "^6.24.1",
     "eslint": "^5.6.0",
+    "eslint-plugin-babel": "^5.3.0",
     "eslint-plugin-jest": "^22.5.1"
   }
 }
