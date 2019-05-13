@@ -10,9 +10,14 @@
 }
 
 .deleteButton {
+  display: none;
   margin-left: auto;
   color: #BEF2C1;
   cursor: pointer;
   border: none;
   background: transparent;
+}
+
+.todoItem:hover .deleteButton {
+  display: block;
 }
