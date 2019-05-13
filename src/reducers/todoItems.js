@@ -1,48 +1,56 @@
-import { updateItemInList } from '../helpers/arrayHelpers'
+import omit from 'lodash/omit'
 
-const todoItems = (state = [], action) => {
+const todoItems = (state = {}, action) => {
   switch (action.type) {
   case 'ADD_TODO_ITEM':
-    return state.concat({
-      todoItemId: action.todoItemId,
-      text: action.text,
-      done: false,
-      deadline: null
-    })
+    return {
+      ...state,
+      [action.todoListId]: state[action.todoListId] || []
+        .concat({
+          todoItemId: action.todoItemId,
+          text: action.text,
+          done: false,
+          deadline: null
+        })
+    }
   case 'CHANGE_TODO_ITEM_TEXT':
-    return updateItemInList(
-      state,
-      todoItem => todoItem.todoItemId === action.todoItemId,
-      todoItem => ({ ...todoItem, text: action.newText })
-    )
+    return {
+      ...state,
+      [action.todoListId]: state[action.todoListId]
+        .map(item =>
+          item.todoItemId == action.todoItemId ?
+            ({ ...item, text: action.newText }) : item
+        )
+    }
   case 'TOGGLE_TODO_ITEM':
-    return updateItemInList(
-      state,
-      todoItem => todoItem.todoItemId === action.todoItemId,
-      todoItem => ({ ...todoItem, done: !todoItem.done })
-    )
+    return {
+      ...state,
+      [action.todoListId]: state[action.todoListId]
+        .map(item =>
+          item.todoItemId == action.todoItemId ?
+            ({ ...item, done: !item.done }) : item
+        )
+    }
   case 'REMOVE_TODO_ITEM':
-    return state.filter(todoItem => todoItem.todoItemId !== action.todoItemId)
+    return {
+      ...state,
+      [action.todoListId]: state[action.todoListId]
+        .filter(item => item.todoItemId !== action.todoItemId)
+    }
+  case 'REMOVE_TODO_LIST':
+    return omit(state, action.todoListId)
   case 'CHANGE_TODO_ITEM_DEADLINE':
-    return updateItemInList(
-      state,
-      todoItem => todoItem.todoItemId === action.todoItemId,
-      todoItem => ({ ...todoItem, deadline: action.newDeadline })
-    )
+    return {
+      ...state,
+      [action.todoListId]: state[action.todoListId]
+        .map(item =>
+          item.todoItemId == action.todoItemId ?
+            ({ ...item, deadline: action.newDeadline }) : item
+        )
+    }
   default:
     return state
   }
 }
 
-const todoListItems = (state = {}, action) => {
-  if (action.type) {
-    return {
-      ...state,
-      [action.todoListId]: todoItems(state[action.todoListId], action)
-    }
-  } else {
-    return state
-  }
-}
-
-export default todoListItems
+export default todoItems

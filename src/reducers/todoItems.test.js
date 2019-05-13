@@ -101,6 +101,40 @@ describe('todo items reducer', () => {
     })
   })
 
+  describe('REMOVE_TODO_LIST', () => {
+    const todoListId = 99
+    const initialState = {
+      [todoListId]: [{
+        todoItemId: 88,
+        text: 'Do something',
+        done: false,
+        deadline: null
+      }],
+      777: [{
+        todoItemId: 66,
+        text: 'Do another thing',
+        done: false,
+        deadline: null
+      }]
+    }
+
+    it('should remove a todo item', () => {
+      const newState = reducer(initialState, {
+        type: 'REMOVE_TODO_LIST',
+        todoListId,
+      })
+
+      expect(newState).toEqual({
+        777: [{
+          todoItemId: 66,
+          text: 'Do another thing',
+          done: false,
+          deadline: null
+        }]
+      })
+    })
+  })
+
   describe('REMOVE_TODO_ITEM', () => {
     const todoListId = 99
     const initialState = {
