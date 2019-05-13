@@ -2,7 +2,7 @@ import React from 'react'
 import { Provider } from 'react-redux'
 import { mount } from 'enzyme'
 import configureStore from 'redux-mock-store'
-import App from './App'
+import App from '.'
 
 const middlewares = []
 const mockStore = configureStore(middlewares)

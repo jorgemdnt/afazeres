@@ -1,6 +1,6 @@
 import React from 'react'
 import { shallow, mount } from 'enzyme'
-import { TodoList } from './TodoList'
+import { TodoList } from '.'
 
 describe('TodoList', () => {
   let removeTodoListMock
@@ -48,7 +48,7 @@ describe('TodoList', () => {
         removeTodoList={removeTodoListMock} />
     )
 
-    todoList.find('.TodoList-delete-button').simulate('click')
+    todoList.find('.removeListButton').simulate('click')
 
     expect(removeTodoListMock).toHaveBeenCalledWith(99)
   })

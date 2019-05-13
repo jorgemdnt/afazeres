@@ -1,6 +1,6 @@
 import React from 'react'
 import { mount, shallow } from 'enzyme'
-import TransparentTextInput from './TransparentTextInput'
+import TransparentTextInput from '.'
 
 describe('TransparentTextInput', () => {
   let onChangeMock

@@ -1,6 +1,6 @@
 import React from 'react'
 import { mount, shallow } from 'enzyme'
-import { TodoItem } from './TodoItem'
+import { TodoItem } from '.'
 
 describe('TodoItem', () => {
   const todoListId = 666
@@ -40,7 +40,7 @@ describe('TodoItem', () => {
         editTodoItemText={editTodoItemTextMock} />
     )
 
-    component.find('.TodoItem-text-input').simulate('change', { target: { value: 'Do something' } })
+    component.find('TransparentTextInput').simulate('change', { target: { value: 'Do something' } })
 
     expect(editTodoItemTextMock).toHaveBeenCalledWith(todoListId, todoItemId, 'Do something')
   })
@@ -56,7 +56,7 @@ describe('TodoItem', () => {
         editTodoItemText={editTodoItemTextMock} />
     )
 
-    component.find('.TodoItem-done-input').simulate('change')
+    component.find('.doneInput').simulate('change')
 
     expect(toggleTodoItemMock).toHaveBeenCalledWith(todoListId, todoItemId)
   })
@@ -73,7 +73,7 @@ describe('TodoItem', () => {
         editTodoItemText={editTodoItemTextMock} />
     )
 
-    component.find('.TodoList-delete-button').simulate('click')
+    component.find('.deleteButton').simulate('click')
 
     expect(removeTodoItemMock).toHaveBeenCalledWith(todoListId, todoItemId)
   })

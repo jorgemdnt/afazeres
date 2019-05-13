@@ -1,7 +1,6 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import { TodoListsContainer } from './TodoListsContainer'
-import TodoList from './TodoList'
+import { TodoListsContainer } from '.'
 
 describe('TodoListsContainer', () => {
   const noOp = () => {}
@@ -23,6 +22,6 @@ describe('TodoListsContainer', () => {
         todoItems={{}} />
     )
 
-    expect(appComponent.find(TodoList).length).toEqual(1)
+    expect(appComponent.find('TodoList').length).toEqual(1)
   })
 })

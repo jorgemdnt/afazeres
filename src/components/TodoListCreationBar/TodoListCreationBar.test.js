@@ -1,6 +1,6 @@
 import React from 'react'
 import { mount } from 'enzyme'
-import { TodoListCreationBar } from './TodoListCreationBar'
+import { TodoListCreationBar } from '.'
 
 describe('TodoListCreationBar', () => {
   it('renders without errors', () => {
