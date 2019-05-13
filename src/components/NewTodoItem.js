@@ -34,4 +34,4 @@ NewTodoItem.propTypes = {
   addTodoItem: PropTypes.func.isRequired
 }
 
-export default NewTodoItem
+export default React.memo(NewTodoItem)

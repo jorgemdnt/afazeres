@@ -5,7 +5,7 @@ import TodoItem from '../TodoItem'
 import TodoListHeader from '../TodoListHeader'
 import NewTodoItem from '../NewTodoItem'
 
-export class TodoList extends React.Component {
+export class TodoList extends React.PureComponent {
   constructor(props) {
     super(props)
     this.state = {
