@@ -1,8 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import TodoItem from './TodoItem'
-import TodoListHeader from './TodoListHeader'
-import NewTodoItem from './NewTodoItem'
+import styles from './TodoList.module.css'
+import TodoItem from '../TodoItem'
+import TodoListHeader from '../TodoListHeader'
+import NewTodoItem from '../NewTodoItem'
 
 export class TodoList extends React.Component {
   constructor(props) {
@@ -31,7 +32,7 @@ export class TodoList extends React.Component {
     } = this.props
 
     return (
-      <div className="TodoList">
+      <div className={styles.todoList}>
         <TodoListHeader
           title={title}
           removeTodoList={removeTodoList}

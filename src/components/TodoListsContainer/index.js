@@ -1,7 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import styles from './TodoListsContainer.module.css'
 import { connect } from 'react-redux'
-import TodoList from './TodoList'
+import TodoList from '../TodoList'
 import {
   addTodoItem,
   removeTodoList,
@@ -9,14 +10,14 @@ import {
   editTodoItemText,
   toggleTodoItem,
   removeTodoItem
-} from '../actions'
+} from '../../actions'
 
 export const TodoListsContainer = ({
   todoLists, todoItems, addTodoItem,
   removeTodoList, editTodoListTitle, editTodoItemText,
   toggleTodoItem, removeTodoItem
 }) => (
-  <div className="TodoListsContainer">
+  <div className={styles.todoListsContainer}>
     {todoLists.map(
       todoList =>
         <TodoList

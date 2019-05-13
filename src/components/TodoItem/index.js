@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import TransparentTextInput from './TransparentTextInput'
+import styles from './TodoItem.module.css'
+import TransparentTextInput from '../TransparentTextInput'
 
 export const TodoItem = ({
   done = false,
@@ -11,17 +12,17 @@ export const TodoItem = ({
   toggleTodoItem,
   removeTodoItem
 }) => (
-  <div className="TodoItem">
+  <div className={styles.todoItem}>
     <input
       checked={done}
       onChange={() => toggleTodoItem(todoListId, todoItemId)}
-      className="TodoItem-done-input"
+      className={styles.doneInput}
       type="checkbox" />
     <TransparentTextInput
-      className="TodoItem-text-input"
+      className={styles.itemText}
       value={text}
       onChange={newText => editTodoItemText(todoListId, todoItemId, newText)} />
-    <button onClick={() => removeTodoItem(todoListId, todoItemId)} className="TodoList-delete-button">
+    <button onClick={() => removeTodoItem(todoListId, todoItemId)} className={styles.deleteButton}>
       <i>remove</i>
     </button>
   </div>

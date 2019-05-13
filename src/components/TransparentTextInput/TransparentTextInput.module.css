@@ -1,0 +1,5 @@
+.transparentTextInput {
+  border: none;
+  background: transparent;
+  color: currentColor;
+}

@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { addTodoList } from '../actions'
+import { addTodoList } from '../../actions'
 
 export class TodoListCreationBar extends React.Component {
   constructor(props) {

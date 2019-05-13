@@ -1,0 +1,14 @@
+.todoListHeader {
+  display: flex;
+}
+
+.titleInput {
+  font-weight: bold;
+}
+
+.removeListButton {
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  margin-left: auto;
+}

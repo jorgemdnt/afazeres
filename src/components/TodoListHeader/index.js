@@ -1,14 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import TransparentTextInput from './TransparentTextInput'
-import { DeleteIcon } from './Icons'
+import styles from './TodoListHeader.module.css'
+import TransparentTextInput from '../TransparentTextInput'
+import { DeleteIcon } from '../Icons'
 
 const TodoListHeader = ({ title, todoListId, removeTodoList, editTodoListTitle }) => (
-  <div className="TodoListHeader">
+  <div className={styles.todoListHeader}>
     <TransparentTextInput
+      className={styles.titleInput}
       value={title}
       onChange={newTitle => editTodoListTitle(todoListId, newTitle)} />
-    <button onClick={() => removeTodoList(todoListId)} className="TodoList-delete-button">
+    <button onClick={() => removeTodoList(todoListId)} className={styles.removeListButton}>
       <DeleteIcon />
     </button>
   </div>

@@ -1,0 +1,18 @@
+.todoItem {
+  display: flex;
+}
+
+.itemText {
+  width: 100%;
+}
+
+.doneInput {
+}
+
+.deleteButton {
+  margin-left: auto;
+  color: #BEF2C1;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+}

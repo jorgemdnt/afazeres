@@ -1,5 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import styles from './TransparentTextInput.module.css'
+import cx from 'classnames'
 
 class TransparentTextInput extends React.PureComponent {
   onChange(event) {
@@ -13,11 +15,11 @@ class TransparentTextInput extends React.PureComponent {
   }
 
   render() {
-    const { value, placeholder } = this.props
+    const { value, placeholder, className } = this.props
 
     return (
       <input
-        className="TransparentTextInput"
+        className={cx(styles.transparentTextInput, className)}
         onChange={this.onChange.bind(this)}
         onKeyPress={this.onKeyPress.bind(this)}
         value={value}
@@ -28,6 +30,7 @@ class TransparentTextInput extends React.PureComponent {
 
 TransparentTextInput.propTypes = {
   value: PropTypes.string,
+  className: PropTypes.string,
   placeholder: PropTypes.string,
   onChange: PropTypes.func.isRequired,
   onEnterKeyPressed: PropTypes.func
